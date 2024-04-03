@@ -15,11 +15,11 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/files")
 public class ImageRestController {
-    private final S3UploaderService s3UploaderService;
+   private final S3UploaderService s3UploaderService;
 
     @PostMapping("/upload")
     public ResponseEntity<List<String>> uploadFile(
-            @RequestParam("multipartfiles")List<MultipartFile> multipartFiles)
+            @RequestParam("multipartFiles")List<MultipartFile> multipartFiles)
     {
         return ResponseEntity.ok(s3UploaderService.insertFile(multipartFiles));
     }

@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -32,11 +31,11 @@ public class S3UploaderService {
     @Value("${cloud.aws.s3.bucket}")
     private String bucket;
 
-    @Value("${cloud.aws.s3.static}")
+    @Value("${cloud.aws.region.static}")
     private String region;
 
     private final AmazonS3 amazonS3;
-    private final ImageRepogitory imgRepogitory;
+    private final ImageRepogitory imageRepogitory;
 
     @Transactional
     public List<String> insertFile(List<MultipartFile> multipartFiles){
@@ -53,10 +52,9 @@ public class S3UploaderService {
 
             try(InputStream inputStream = files.getInputStream()){
                 amazonS3.putObject(new PutObjectRequest(bucket,fileName,inputStream,objectMetadata));
-                imgRepogitory.save(new ImageDto(URLs).toEntity());
+                imageRepogitory.save(new ImageDto(URLs).toEntity());
                 fileURLs.add(URLs);
             }catch (IOException e){
-
                 throw  new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,"파일 업로드 실패!!");
             }
         });
