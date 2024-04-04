@@ -4,7 +4,7 @@
 - AmazonS3, RDS, MySQL 연동하여 이미지 배포 
 - AWS EC2, Route53(도메인 연결), AWS ELB, RDS를 설정하여 작성
 
-## 코드 
+## ✅ 코드 
 <details><summary>S3설정</summary>
    - S3Config.java
   
@@ -174,3 +174,17 @@
 
   ```
 </details>
+
+## ✅ 결과 
+   - 파일 전송
+    ![image](https://github.com/HyeongJunIm/AmazonS3Service/assets/141614134/da2cb7a8-2d68-4fea-8d99-99373a0ecd23)
+   ![image](https://github.com/HyeongJunIm/AmazonS3Service/assets/141614134/2aa5ba11-b7ca-46ae-a605-e41c7b81a85d)
+
+   - RDS 저장
+     ![image](https://github.com/HyeongJunIm/AmazonS3Service/assets/141614134/8b233fcc-6bfa-49b2-8792-4d1d1a8fca79)
+
+   - MySQL 저장
+     ![image](https://github.com/HyeongJunIm/AmazonS3Service/assets/141614134/b6b9a1cb-e21b-4caa-9bb9-76bc30a2ab7d)
+
+
+
